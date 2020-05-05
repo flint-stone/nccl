@@ -11,7 +11,7 @@ private:
 	std::string tag_;
 public:
 	nvtxTagger(std::string tag_name):tag_(tag_name){
-		nvtxRangePushA(tag_);
+		nvtxRangePushA(tag_.c_str());
 	}
 	~nvtxTagger(){
 		nvtxRangePop();
