@@ -6,6 +6,7 @@
 
 #include "enqueue.h"
 #include "collectives.h"
+#include "nvtxTagger.h"
 
 NCCL_API(ncclResult_t, ncclAllGather, const void* sendbuff, void* recvbuff, size_t sendcount,
     ncclDataType_t datatype, ncclComm_t comm, cudaStream_t stream);

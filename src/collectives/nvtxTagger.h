@@ -5,7 +5,7 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <string>
-
+//https://github.com/tlorach/nvFX/blob/master/NSight/nvToolsExt.h
 struct nvtxTagger{
 private:
 	std::string tag_;
