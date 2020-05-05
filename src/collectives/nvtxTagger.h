@@ -5,15 +5,18 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <string>
+#include "debug.h"
 //https://github.com/tlorach/nvFX/blob/master/NSight/nvToolsExt.h
 struct nvtxTagger{
 private:
 	std::string tag_;
 public:
 	nvtxTagger(std::string tag_name):tag_(tag_name){
-		nvtxRangePushA(tag_.c_str());
+		WARN("nvtxTagger: enter %s", tag_.c_str());
+		//nvtxRangePushA(tag_.c_str());
 	}
 	~nvtxTagger(){
-		nvtxRangePop();
+		//nvtxRangePop();
+		WARN("nvtxTagger: exit %s", tag_.c_str());
 	}
 };
