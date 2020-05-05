@@ -384,6 +384,7 @@ ncclResult_t ncclCommSetIntra(struct ncclComm* comm, int rank, int ranks, struct
   }
   if (comm->launchMode == ncclComm::GROUP) {
     CUDACHECK(cudaStreamCreateWithFlags(&comm->groupStream, cudaStreamNonBlocking));
+    WARN("ncclCommSetIntra cudaStreamCreateWithFlags (cudaStreamNonBlocking %d)", cudaStreamNonBlocking);
 #if CUDART_VERSION >= 9000
     if (*comm->intraCC && (ncclCudaCompCap() == *comm->intraCC)) {
       // Check whether the GPU supports Cooperative Group Multi Device Launch
