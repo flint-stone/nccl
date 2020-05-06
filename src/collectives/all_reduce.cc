@@ -6,11 +6,13 @@
 
 #include "enqueue.h"
 #include "nvtxTagger.h"
+#include "debug.h"
 
 NCCL_API(ncclResult_t, ncclAllReduce, const void* sendbuff, void* recvbuff, size_t count,
     ncclDataType_t datatype, ncclRedOp_t op, ncclComm* comm, cudaStream_t stream);
 ncclResult_t ncclAllReduce(const void* sendbuff, void* recvbuff, size_t count,
     ncclDataType_t datatype, ncclRedOp_t op, ncclComm* comm, cudaStream_t stream) {
+	INFO(NCCL_COLL, "create dummy tagger: nccl: AllReduce");
 	nvtxTagger dummyTagger = nvtxTagger("nccl: AllReduce");
   struct ncclInfo info = { ncclCollAllReduce, "AllReduce",
     sendbuff, recvbuff, count, datatype, op, 0, comm, stream, /* Args */
