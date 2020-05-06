@@ -13,10 +13,10 @@ private:
 public:
 	nvtxTagger(std::string tag_name):tag_(tag_name){
 		WARN("nvtxTagger: enter %s", tag_.c_str());
-		//nvtxRangePushA(tag_.c_str());
+		nvtxRangePushA(tag_.c_str());
 	}
 	~nvtxTagger(){
-		//nvtxRangePop();
+		nvtxRangePop();
 		WARN("nvtxTagger: exit %s", tag_.c_str());
 	}
 };
